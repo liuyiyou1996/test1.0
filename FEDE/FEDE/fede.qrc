@@ -1,0 +1,47 @@
+<RCC>
+  <qresource prefix="/FEDE">
+    <file>Resources/arrow_down_gray.png</file>
+    <file>Resources/judge2.png</file>
+    <file>Resources/judge2.JPG</file>
+    <file>Resources/judge3.JPG</file>
+    <file>Resources/judge2_1.png</file>
+    <file>Resources/judge2_2.png</file>
+    <file>Resources/judge2_3.png</file>
+    <file>Resources/judge4.JPG</file>
+    <file>Resources/all.png</file>
+    <file>Resources/building.png</file>
+    <file>Resources/factory.png</file>
+    <file>Resources/building_blue.png</file>
+    <file>Resources/building_black.png</file>
+    <file>Resources/factory_black.png</file>
+    <file>Resources/fire_black.png</file>
+    <file>Resources/logo_black.png</file>
+    <file>Resources/road_black.png</file>
+    <file>Resources/traffic_black.png</file>
+    <file>Resources/factory_blue.png</file>
+    <file>Resources/fire_blue.png</file>
+    <file>Resources/logo_blue.png</file>
+    <file>Resources/road_blue.png</file>
+    <file>Resources/fail.png</file>
+    <file>Resources/finish.png</file>
+    <file>Resources/ing.png</file>
+    <file>Resources/traffic_blue.png</file>
+    <file>Resources/fire.png</file>
+    <file>Resources/road.png</file>
+    <file>Resources/traffic.png</file>
+    <file>Resources/logo.png</file>
+    <file>Resources/judge5.JPG</file>
+    <file>Resources/judge1.JPG</file>
+    <file>Resources/flood1.png</file>
+    <file>Resources/flood2.png</file>
+    <file>Resources/movie.png</file>
+    <file>Resources/people.png</file>
+    <file>Resources/flood.png</file>
+    <file>Resources/water.png</file>
+    <file>Resources/map.png</file>
+    <file>Resources/map.JPG</file>
+    <file>Resources/judge_place.png</file>
+    <file>Resources/record.png</file>
+    <file>Resources/setting.png</file>
+  </qresource>
+</RCC>

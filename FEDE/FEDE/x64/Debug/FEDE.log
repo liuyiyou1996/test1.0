@@ -1,0 +1,17 @@
+﻿生成启动时间为 2018/10/27 20:44:34。
+     1>项目“D:\FEDE\FEDE\FEDE\FEDE.vcxproj”在节点 2 上(Build 个目标)。
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_fede.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are GeneratedFiles\Debug\moc_fede.cpp, GeneratedFiles\Release\moc_fede.cpp.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /I.\GeneratedFiles /I. /IC:\Qtmsvc\Qt5.7.1\5.7\msvc2013_64\include /I.\GeneratedFiles\Debug /IC:\Qtmsvc\Qt5.7.1\5.7\msvc2013_64\include\QtCore /IC:\Qtmsvc\Qt5.7.1\5.7\msvc2013_64\include\QtGui /IC:\Qtmsvc\Qt5.7.1\5.7\msvc2013_64\include\QtMultimedia /IC:\Qtmsvc\Qt5.7.1\5.7\msvc2013_64\include\QtMultimediaWidgets /IC:\Qtmsvc\Qt5.7.1\5.7\msvc2013_64\include\QtSql /IC:\Qtmsvc\Qt5.7.1\5.7\msvc2013_64\include\QtWebChannel /IC:\Qtmsvc\Qt5.7.1\5.7\msvc2013_64\include\QtWebSockets /IC:\Qtmsvc\Qt5.7.1\5.7\msvc2013_64\include\QtWidgets /Zi /nologo /W1 /WX- /Od /D UNICODE /D WIN32 /D WIN64 /D QT_DLL /D QT_CORE_LIB /D QT_GUI_LIB /D QT_MULTIMEDIA_LIB /D QT_MULTIMEDIAWIDGETS_LIB /D QT_SQL_LIB /D QT_WEBCHANNEL_LIB /D QT_WEBSOCKETS_LIB /D QT_WIDGETS_LIB /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt main.cpp
+         main.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\FEDE\FEDE\x64\Debug\\FEDE.exe" /NOLOGO /LIBPATH:C:\Qtmsvc\Qt5.7.1\5.7\msvc2013_64\lib qtmaind.lib Qt5Cored.lib Qt5Guid.lib Qt5Multimediad.lib Qt5MultimediaWidgetsd.lib Qt5Sqld.lib Qt5WebChanneld.lib Qt5WebSocketsd.lib Qt5Widgetsd.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\FEDE\FEDE\x64\Debug\FEDE.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\FEDE\FEDE\x64\Debug\FEDE.lib" /MACHINE:X64 x64\Debug\fede.obj
+         x64\Debug\moc_fede.obj
+         x64\Debug\qrc_fede.obj
+         x64\Debug\main.obj
+         FEDE.vcxproj -> D:\FEDE\FEDE\x64\Debug\FEDE.exe
+     1>已完成生成项目“D:\FEDE\FEDE\FEDE\FEDE.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.68
