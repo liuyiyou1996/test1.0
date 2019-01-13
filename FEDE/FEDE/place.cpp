@@ -26,6 +26,7 @@ int stage = 0;
 QString time1[15];
 int score_auto[15] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 int score_auto_all;
+void pdf_form_data_1();
 
 /*
  演练保障  form_1_weight[0]-form_1_weight[5]
@@ -71,6 +72,8 @@ int score_auto_all;
 
 */
 QString score2[105][3];
+int pdf_data[105];
+
 int form_2_weight[105][3];//权重
 /*
 检验预案   form_2_weight[0]-form_2_weight[2]
@@ -682,6 +685,32 @@ void place::Click_pushButton()//火
 	{
 		choose1 = 1;
 		currentPlace = 1;
+		ui.label_content->setText("指挥员接警");
+		ui.label_content_2->setText("发送集结警报");
+		ui.label_content_3->setText("指定位置集结");
+		ui.label_content_4->setText("发出行动指令");
+		ui.label_content_5->setText("定位灾害现场");
+		ui.label_content_6->setText("通信操作测试");
+		ui.label_content_7->setText("领队考察现场");
+		ui.label_content_8->setText("危险品搬运");
+		ui.label_content_9->setText("护送被困人员");
+		ui.label_content_10->setText("监控灾害现场");
+		ui.label_content_11->setText("人员现场集中");
+		ui.label_content_12->setText("");
+
+		ui.label_time->setText("00:00:00");
+		ui.label_time_2->setText("00:00:00");
+		ui.label_time_3->setText("00:00:00");
+		ui.label_time_4->setText("00:00:00");
+		ui.label_time_5->setText("00:00:00");
+		ui.label_time_6->setText("00:00:00");
+		ui.label_time_7->setText("00:00:00");
+		ui.label_time_8->setText("00:00:00");
+		ui.label_time_9->setText("00:00:00");
+		ui.label_time_10->setText("00:00:00");
+		ui.label_time_11->setText("00:00:00");
+		ui.label_time_12->setText("");
+
 		ui.tabWidget_2->setCurrentIndex(1);
 		ui.tabWidget->setTabEnabled(0, true);
 		ui.pushButton_begin->setEnabled(true);
@@ -766,6 +795,31 @@ void place::Click_pushButton_5()
 	{
 	choose1 = 2;
 	currentPlace = 5;
+	ui.label_content->setText("指挥员接警");
+	ui.label_content_2->setText("发送集结警报");
+	ui.label_content_3->setText("指定位置集结");
+	ui.label_content_4->setText("发出行动指令");
+	ui.label_content_5->setText("定位灾害现场");
+	ui.label_content_6->setText("放置警戒标志");
+	ui.label_content_7->setText("解救现场人员");
+	ui.label_content_8->setText("运送受伤人员");
+	ui.label_content_9->setText("处理现场险情");
+	ui.label_content_10->setText("恢复现场通行");
+	ui.label_content_11->setText("");
+	ui.label_content_12->setText("");
+
+	ui.label_time->setText("00:00:00");
+	ui.label_time_2->setText("00:00:00");
+	ui.label_time_3->setText("00:00:00");
+	ui.label_time_4->setText("00:00:00");
+	ui.label_time_5->setText("00:00:00");
+	ui.label_time_6->setText("00:00:00");
+	ui.label_time_7->setText("00:00:00");
+	ui.label_time_8->setText("00:00:00");
+	ui.label_time_9->setText("00:00:00");
+	ui.label_time_10->setText("00:00:00");
+	ui.label_time_11->setText("");
+	ui.label_time_12->setText("");
 	ui.tabWidget_2->setCurrentIndex(1);
 	ui.tabWidget->setTabEnabled(0, true);
 	ui.pushButton_begin->setEnabled(true);
@@ -787,6 +841,33 @@ void place::Click_pushButton_6()
 	{
 	choose1 = 1;
 	currentPlace = 6;
+
+	ui.label_content->setText("指挥员接警");
+	ui.label_content_2->setText("发送集结警报");
+	ui.label_content_3->setText("指定位置集结");
+	ui.label_content_4->setText("发出行动指令");
+	ui.label_content_5->setText("定位灾害现场");
+	ui.label_content_6->setText("通信操作测试");
+	ui.label_content_7->setText("侦查事故现场");
+	ui.label_content_8->setText("放置警戒标志");
+	ui.label_content_9->setText("救援人员检查");
+	ui.label_content_10->setText("到达相应水域");
+	ui.label_content_11->setText("营救被困人员");
+	ui.label_content_12->setText("核查最终现场");
+
+	ui.label_time->setText("00:00:00");
+	ui.label_time_2->setText("00:00:00");
+	ui.label_time_3->setText("00:00:00");
+	ui.label_time_4->setText("00:00:00");
+	ui.label_time_5->setText("00:00:00");
+	ui.label_time_6->setText("00:00:00");
+	ui.label_time_7->setText("00:00:00");
+	ui.label_time_8->setText("00:00:00");
+	ui.label_time_9->setText("00:00:00");
+	ui.label_time_10->setText("00:00:00");
+	ui.label_time_11->setText("00:00:00");
+	ui.label_time_12->setText("00:00:00");
+
 	ui.tabWidget_2->setCurrentIndex(1);
 	ui.tabWidget->setTabEnabled(0, true);
 	ui.pushButton_begin->setEnabled(true);
@@ -961,174 +1042,110 @@ void place::Click_pushButton_back()
 void place::Click_pushButton_paint()
 {
 
-
-	QPrinter pic_printer(QPrinter::HighResolution); //用一种分辨率初始化
-	//QPrinter printerPixmap(QPrinter::HighResolution);
-	pic_printer.setPageSize(QPrinter::A4); //设置纸张尺寸，默认不设置就是A4
-	pic_printer.setOutputFormat(QPrinter::PdfFormat); //设置输出格式pdf
-	QString file_path = QFileDialog::getSaveFileName(this, "输入待导出的报告存储位置", QString(), "*.pdf");  //用文件对话框设置输出路径
-	if (!file_path.isEmpty())
+	QString file_path1 = QFileDialog::getSaveFileName(this, "输入待导出的报告存储位置", QString(), "*.pdf");  //用文件对话框设置输出路径
+	if (!file_path1.isEmpty())
 	{
-		if (QFileInfo(file_path).suffix().isEmpty())
+		if (QFileInfo(file_path1).suffix().isEmpty())
 		{
-			file_path.append(".pdf");  //或者 file_path+=".pdf"
+			file_path1.append(".pdf");  //或者 file_path+=".pdf"
 		}
 	}
-	pic_printer.setOutputFileName(file_path);
-	QPixmap pixmap = QPixmap::grabWidget(ui.scrollAreaWidgetContents_3, ui.scrollAreaWidgetContents_3->rect()); //抓取界面widget区域，可以抓取任意控件区域，Qt5推荐新的API QWidget::grab
-	//QPixmap pixmap2 = QPixmap::grabWidget(ui.label_2_2, ui.label_2_2->rect()); //抓取界面widget区域，可以抓取任意控件区域，Qt5推荐新的API QWidget::grab
-	//QPixmap pixmap3 = QPixmap::grabWidget(ui.label_2_3, ui.label_2_3->rect()); //抓取界面widget区域，可以抓取任意控件区域，Qt5推荐新的API QWidget::grab
-	//pixmap.load("1.png");
-	QPainter pic_painter;
+	QPrinter printer_text;
+	printer_text.setOutputFormat(QPrinter::PdfFormat);
+	printer_text.setOutputFileName(file_path1);//pdfname为要保存的pdf文件名
+	printer_text.setPageSize(QPrinter::A4); //设置纸张尺寸，默认不设置就是A4
 
-	pic_painter.begin(&pic_printer);
+	QTextDocument text_document;
+	QTextDocument text_document2;
 
-	QRect rect = pic_painter.viewport(); //获取painter的视口区域
-
-	int factor = rect.width() / pixmap.width(); //计算painter视口区域与抓取图片区域的尺寸比例因子
-
-	pic_painter.scale(factor, factor); //绘制时按照比例因子放大
-	//pic_painter.scale(1, 1); //绘制时按照比例因子放大
-
-	pic_painter.drawPixmap(10, 200, pixmap); //按照坐标画图
-    //pic_painter.scale(1,1); //回复比例，否则字体很大不正常,此步貌似不需要
-	 rect = pic_painter.viewport(); //获取painter的视口区域
-
-	// factor = pixmap.width() / pixmap2.width(); //计算painter视口区域与抓取图片区域的尺寸比例因子
- pic_printer.setResolution(QPrinter::ScreenResolution); //也可以设置其他的分辨率
-
-	pic_painter.scale(0.15, 0.15); //绘制时按照比例因子放大
-	if (1)
-	{
-		QPoint point(1000, 200);
-		int i1 = 200;
-		QString message = QString("%1").arg("         事故应急演练评估结果");
-		pic_painter.drawText(point, message);
-		int y = point.y();
-		y = y + i1;
-		point.setY(y);
-		 message = QString("%1        %2").arg("系统评估场景：").arg(ui.label_12->text());
-		pic_painter.drawText(point, message);
-		 y = point.y();
-		y = y + i1; 
-		point.setY(y);
-		message = QString("%1        %2").arg("评估队伍名称：").arg(Team_name);
-		pic_painter.drawText(point, message);
-		y = y + i1;
-		point.setY(y);
-		message = QString("%1        %2").arg("自动评估分数：").arg(QString::number(score_auto_all, 10));
-		pic_painter.drawText(point, message);
-		y = y + i1;
-		point.setY(y);
-		message = QString("%1        %2").arg("人工评估分数：").arg(QString::number(score, 10));
-		pic_painter.drawText(point, message);
-		y = y + i1;
-		point.setY(y);
-		message = QString("%1        %2").arg("合计评估分数：").arg(QString::number(score_finish, 'g', 6));
-		pic_painter.drawText(point, message);
-		y = y + i1;
-		point.setY(y);
-		message = QString("%1        %2").arg("合计持续时间：").arg(Timing);
-		pic_painter.drawText(point, message);
-	}
-
-		//pic_painter.drawText(10, i * 30, "hello world"); //按照坐标（或矩形）输出,文本为QString类型，有多种重载函数，随便用哪一种
-	pic_painter.end();
-	//QPrinter text_printer; //文本生成不要设置resolution，否则输出会乱掉
-	//QPainter text_painter;
-	//text_printer.setOutputFormat(QPrinter::PdfFormat);
-
-	//text_printer.setOutputFileName("test_text.pdf"); //直接设置输出文件路径，相对或者绝对路径
-
-	//text_painter.begin(&text_printer);
-
-	//for (int i = 0; i<5; i++)
-
-	//	text_painter.drawText(10, i * 30, "hello world"); //按照坐标（或矩形）输出,文本为QString类型，有多种重载函数，随便用哪一种
-
-	//text_painter.end();
-
+	QString html = GeneratePicWord1();//自定义的函数，用来生成html代码
+	text_document.setHtml(html);
+	text_document.print(&printer_text);
+	printer_text.newPage();
+	text_document2.setHtml(html);
+	text_document2.print(&printer_text);
 }
 void place::Click_pushButton_paint_2()
 {
-
-
-	QPrinter pic_printer(QPrinter::HighResolution); //用一种分辨率初始化
-													//QPrinter printerPixmap(QPrinter::HighResolution);
-	pic_printer.setPageSize(QPrinter::A4); //设置纸张尺寸，默认不设置就是A4
-	pic_printer.setOutputFormat(QPrinter::PdfFormat); //设置输出格式pdf
-	QString file_path = QFileDialog::getSaveFileName(this, "输入待导出的报告存储位置", QString(), "*.pdf");  //用文件对话框设置输出路径
-	if (!file_path.isEmpty())
+#if 0
+	if (0)
 	{
-		if (QFileInfo(file_path).suffix().isEmpty())
+		QPrinter pic_printer(QPrinter::HighResolution); //用一种分辨率初始化
+														//QPrinter printerPixmap(QPrinter::HighResolution);
+		pic_printer.setPageSize(QPrinter::A4); //设置纸张尺寸，默认不设置就是A4
+		pic_printer.setOutputFormat(QPrinter::PdfFormat); //设置输出格式pdf
+		QString file_path = QFileDialog::getSaveFileName(this, "输入待导出的报告存储位置", QString(), "*.pdf");  //用文件对话框设置输出路径
+		if (!file_path.isEmpty())
 		{
-			file_path.append(".pdf");  //或者 file_path+=".pdf"
+			if (QFileInfo(file_path).suffix().isEmpty())
+			{
+				file_path.append(".pdf");  //或者 file_path+=".pdf"
+			}
 		}
+		pic_printer.setOutputFileName(file_path);
+		QPixmap pixmap = QPixmap::grabWidget(ui.scrollAreaWidgetContents, ui.scrollAreaWidgetContents->rect()); //抓取界面widget区域，可以抓取任意控件区域，Qt5推荐新的API QWidget::grab
+																													//QPixmap pixmap2 = QPixmap::grabWidget(ui.label_2_2, ui.label_2_2->rect()); //抓取界面widget区域，可以抓取任意控件区域，Qt5推荐新的API QWidget::grab
+																													//QPixmap pixmap3 = QPixmap::grabWidget(ui.label_2_3, ui.label_2_3->rect()); //抓取界面widget区域，可以抓取任意控件区域，Qt5推荐新的API QWidget::grab
+																													//pixmap.load("1.png");
+		QPainter pic_painter;
+
+		pic_painter.begin(&pic_printer);
+
+		QRect rect = pic_painter.viewport(); //获取painter的视口区域
+
+		int factor = rect.width() / pixmap.width(); //计算painter视口区域与抓取图片区域的尺寸比例因子
+
+		pic_painter.scale(factor - 1.5, factor - 1.5); //绘制时按照比例因子放大
+										   //pic_painter.scale(1, 1); //绘制时按照比例因子放大
+
+		pic_painter.drawPixmap(10, 170, pixmap); //按照坐标画图
+												 //pic_painter.scale(1,1); //回复比例，否则字体很大不正常,此步貌似不需要
+		rect = pic_painter.viewport(); //获取painter的视口区域
+
+									   // factor = pixmap.width() / pixmap2.width(); //计算painter视口区域与抓取图片区域的尺寸比例因子
+		pic_printer.setResolution(QPrinter::ScreenResolution); //也可以设置其他的分辨率
+
+		pic_painter.scale(0.15, 0.15); //绘制时按照比例因子放大
+		if (0)
+		{
+			QPoint point(700, 150);
+			int i1 = 200;
+			QString message = QString("%1").arg("         事故应急演练评估结果");
+			pic_painter.drawText(point, message);
+			int y = point.y();
+			y = y + i1;
+			point.setY(y);
+			message = QString("%1        %2").arg("系统评估场景：").arg(ui.label_12->text());
+			pic_painter.drawText(point, message);
+			y = point.y();
+			y = y + i1;
+			point.setY(y);
+			message = QString("%1        %2").arg("评估队伍名称：").arg(Team_name);
+			pic_painter.drawText(point, message);
+			y = y + i1;
+			point.setY(y);
+			message = QString("%1        %2").arg("自动评估分数：").arg(QString::number(score_auto_all, 10));
+			pic_painter.drawText(point, message);
+			y = y + i1;
+			point.setY(y);
+			message = QString("%1        %2").arg("人工评估分数：").arg(QString::number(score, 10));
+			pic_painter.drawText(point, message);
+			y = y + i1;
+			point.setY(y);
+			message = QString("%1        %2").arg("合计评估分数：").arg(QString::number(score_finish, 'g', 6));
+			pic_painter.drawText(point, message);
+			y = y + i1;
+			point.setY(y);
+			message = QString("%1        %2").arg("合计持续时间：").arg(Timing);
+			pic_painter.drawText(point, message);
+		}
+
+		//pic_painter.drawText(10, i * 30, "hello world"); //按照坐标（或矩形）输出,文本为QString类型，有多种重载函数，随便用哪一种
+		pic_painter.end();
+		//QPrinter text_printer; //文本生成不要设置resolution，否则输出会乱掉
+		//QPainter text_painter;
+		//text_printer.setOutputFormat(QPrinter::PdfFormat);
 	}
-	pic_printer.setOutputFileName(file_path);
-	QPixmap pixmap = QPixmap::grabWidget(ui.scrollAreaWidgetContents, ui.scrollAreaWidgetContents->rect()); //抓取界面widget区域，可以抓取任意控件区域，Qt5推荐新的API QWidget::grab
-																												//QPixmap pixmap2 = QPixmap::grabWidget(ui.label_2_2, ui.label_2_2->rect()); //抓取界面widget区域，可以抓取任意控件区域，Qt5推荐新的API QWidget::grab
-																												//QPixmap pixmap3 = QPixmap::grabWidget(ui.label_2_3, ui.label_2_3->rect()); //抓取界面widget区域，可以抓取任意控件区域，Qt5推荐新的API QWidget::grab
-																												//pixmap.load("1.png");
-	QPainter pic_painter;
-
-	pic_painter.begin(&pic_printer);
-
-	QRect rect = pic_painter.viewport(); //获取painter的视口区域
-
-	int factor = rect.width() / pixmap.width(); //计算painter视口区域与抓取图片区域的尺寸比例因子
-
-	pic_painter.scale(factor-1.5, factor-1.5); //绘制时按照比例因子放大
-									   //pic_painter.scale(1, 1); //绘制时按照比例因子放大
-
-	pic_painter.drawPixmap(10, 170, pixmap); //按照坐标画图
-											 //pic_painter.scale(1,1); //回复比例，否则字体很大不正常,此步貌似不需要
-	rect = pic_painter.viewport(); //获取painter的视口区域
-
-								   // factor = pixmap.width() / pixmap2.width(); //计算painter视口区域与抓取图片区域的尺寸比例因子
-	pic_printer.setResolution(QPrinter::ScreenResolution); //也可以设置其他的分辨率
-
-	pic_painter.scale(0.15, 0.15); //绘制时按照比例因子放大
-	if (1)
-	{
-		QPoint point(700, 150);
-		int i1 = 200;
-		QString message = QString("%1").arg("         事故应急演练评估结果");
-		pic_painter.drawText(point, message);
-		int y = point.y();
-		y = y + i1;
-		point.setY(y);
-		 message = QString("%1        %2").arg("系统评估场景：").arg(ui.label_12->text());
-		pic_painter.drawText(point, message);
-		y = point.y();
-		y = y + i1;
-		point.setY(y);
-		message = QString("%1        %2").arg("评估队伍名称：").arg(Team_name);
-		pic_painter.drawText(point, message);
-		y = y + i1;
-		point.setY(y);
-		message = QString("%1        %2").arg("自动评估分数：").arg(QString::number(score_auto_all, 10));
-		pic_painter.drawText(point, message);
-		y = y + i1;
-		point.setY(y);
-		message = QString("%1        %2").arg("人工评估分数：").arg(QString::number(score, 10));
-		pic_painter.drawText(point, message);
-		y = y + i1;
-		point.setY(y);
-		message = QString("%1        %2").arg("合计评估分数：").arg(QString::number(score_finish, 'g', 6));
-		pic_painter.drawText(point, message);
-		y = y + i1;
-		point.setY(y);
-		message = QString("%1        %2").arg("合计持续时间：").arg(Timing);
-		pic_painter.drawText(point, message);
-	}
-
-	//pic_painter.drawText(10, i * 30, "hello world"); //按照坐标（或矩形）输出,文本为QString类型，有多种重载函数，随便用哪一种
-	pic_painter.end();
-	//QPrinter text_printer; //文本生成不要设置resolution，否则输出会乱掉
-	//QPainter text_painter;
-	//text_printer.setOutputFormat(QPrinter::PdfFormat);
-
 	//text_printer.setOutputFileName("test_text.pdf"); //直接设置输出文件路径，相对或者绝对路径
 
 	//text_painter.begin(&text_printer);
@@ -1139,6 +1156,492 @@ void place::Click_pushButton_paint_2()
 
 	//text_painter.end();
 
+	//Qt5 pdfwriter生成pdf
+	QString file_path1 = QFileDialog::getSaveFileName(this, "输入待导出的报告存储位置", QString(), "*.pdf");  //用文件对话框设置输出路径
+	if (!file_path1.isEmpty())
+	{
+		if (QFileInfo(file_path1).suffix().isEmpty())
+		{
+			file_path1.append(".pdf");  //或者 file_path+=".pdf"
+		}
+	}
+
+	QFile pdfFile(file_path1);
+	pdfFile.open(QIODevice::WriteOnly);                 // 打开要写入的pdf文件
+	QPdfWriter* pPdfWriter = new QPdfWriter(&pdfFile);  // 创建pdf写入器
+	pPdfWriter->setPageSize(QPagedPaintDevice::A4);     // 设置纸张为A4
+	pPdfWriter->setResolution(300);                     // 设置纸张的分辨率为300,因此其像素为3508X2479
+
+	int iMargin = 60;                   // 页边距
+	pPdfWriter->setPageMargins(QMarginsF(iMargin, iMargin, iMargin, iMargin));
+
+	QPainter* pPdfPainter = new QPainter(pPdfWriter);   // qt绘制工具
+
+														// 标题,居中
+	QTextOption option(Qt::AlignHCenter | Qt::AlignVCenter);
+	option.setWrapMode(QTextOption::WordWrap);
+
+	// 标题上边留白
+	int iTop = 100;
+
+	// 文本宽度2100
+	int iContentWidth = 2100;
+
+	// 标题,22号字
+	QFont font;
+	//font.setFamily("simhei.ttf");
+	int fontSize = 22;
+	font.setPointSize(fontSize);
+	pPdfPainter->setFont(font);                    // 为绘制工具设置字体
+	pPdfPainter->drawText(QRect(0, iTop, iContentWidth, 90),
+		"我的标题我骄傲", option);
+
+	// 内容,16号字，左对齐
+	fontSize = 16;
+	font.setPointSize(fontSize);
+	pPdfPainter->setFont(font);
+	option.setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+	iTop += 60;
+	pPdfPainter->drawText(QRect(0, iTop, iContentWidth, 60),
+		QString::fromLocal8Bit("1、目录一"));
+	iTop += 60;
+	// 左侧缩进2字符
+	int iLeft = 120;
+	pPdfPainter->drawText(QRect(iLeft, iTop, iContentWidth - iLeft, 60),
+		QString::fromLocal8Bit("我的目录一的内容。"), option);
+	iTop += 60;
+	pPdfPainter->drawText(QRect(0, iTop, iContentWidth, 60), QString::fromLocal8Bit("2、目录二"));
+	iTop += 60;
+	pPdfPainter->drawText(QRect(iLeft, iTop, iContentWidth - iLeft, 60),
+		QString::fromLocal8Bit("我的目录一的内容"), option);
+
+	delete pPdfPainter;
+	delete pPdfWriter;
+	pdfFile.close();
+#endif
+	QString file_path1 = QFileDialog::getSaveFileName(this, "输入待导出的报告存储位置", QString(), "*.pdf");  //用文件对话框设置输出路径
+	if (!file_path1.isEmpty())
+	{
+		if (QFileInfo(file_path1).suffix().isEmpty())
+		{
+			file_path1.append(".pdf");  //或者 file_path+=".pdf"
+		}
+	}
+	QPrinter printer_text;
+	printer_text.setOutputFormat(QPrinter::PdfFormat);
+	printer_text.setOutputFileName(file_path1);//pdfname为要保存的pdf文件名
+	printer_text.setPageSize(QPrinter::A4); //设置纸张尺寸，默认不设置就是A4
+
+	QTextDocument text_document;
+	QTextDocument text_document2;
+
+	QString html = GeneratePicWord();//自定义的函数，用来生成html代码
+	text_document.setHtml(html);
+	text_document.print(&printer_text);
+	printer_text.newPage();
+	text_document2.setHtml(html);
+	text_document2.print(&printer_text);
+	//QTextBlock it = text_document.end();
+	// it = text_document2.end();
+
+
+
+}
+
+QString place::GeneratePicWord()
+{
+	QStringList title0;
+	title0.push_back(("名称"));
+	title0.push_back(("内容"));
+
+
+	QString html;
+	//第一页文字部分
+	QDateTime current_date_time = QDateTime::currentDateTime();
+	QString current_date = current_date_time.toString("yyyy-MM-dd hh:mm:ss ddd");
+	html += QString("<th><font size = \"14\">应急演练评估结果</font>   </th>");
+	for (int k = 0; k <= 3; k++)
+	{
+		html += "<br / >";
+	}
+	html += "<h3 align=\"center\">" + current_date + "</h3><br>";
+
+	QString a[12];
+	a[0] = "系统评估场景：";
+	a[2] = "评估队伍名称：";
+	a[4] = "自动评估分数：";
+	a[6] = "人工评估分数：";
+	a[8] = "合计评估分数：";
+	a[10] = "合计持续时间：";
+	a[1] = ui.label_12->text();
+	a[3] = Team_name;
+	a[5] = QString::number(score_auto_all, 10);
+	a[7] = QString::number(score, 10);
+	a[9] = QString::number(score_finish, 'g', 6);
+	a[11] = Timing;
+	for (int k = 0; k <= 13; k++)
+	{
+		html += "<br / >";
+	}
+	//表格1部分
+	html += "<div style=\"margin-left:-80px\">";
+	html += "<table width=\"400\" border=\"0.5\"align=\"center\"style=\"border-collapse:collapse;\"border-color=\"green\"margin-left:\"0px\";>";
+	html += "<tr style=\"background-color:#ccc\" >";
+
+	//html += "<table align=\"center\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\"  style=\"width: 100%; height: 100%;\"margin-left:-200\">";
+	for (int i = 0; i < title0.count(); i++)
+	{
+
+		html += QString("<th><font size=\"6\" >%1</font>   </th>").arg(title0.at(i));
+
+	}
+	for (int i = 0; i < 12; i=i+2)
+	{
+		html += "< font size = \"10\">";
+		html += "<tr>";
+		html += QString("<td align=\"center\"><font size=\"5\" >%1</font></td>").arg(a[i]);
+		html += QString("<td align=\"center\"><font size=\"5\" >%1</font></td>").arg(a[i+1]);
+		html += "</tr>";
+		html += "</font>";
+	}
+	html += "</table>";
+	html += "</div>";
+	for (int k=0; k <= 30; k++)
+	{
+		html += "<br / >";
+	}
+	html += QString("<th><font size = \"10\">评分情况</font>   </th>");
+
+	//表格2部分
+	QStringList title;
+	title.push_back(("评估项目"));
+	title.push_back(("评估内容及要求"));
+	title.push_back(("评估结果"));
+	html += "<div style=\"margin-left:-80px\">";
+	html += "<table width=\"500\" border=\"0.5\"align=\"center\"style=\"border-collapse:collapse;\"border-color=\"green\"margin-left:\"0px\";>";
+	html += "<tr style=\"background-color:#ccc\" >" ;
+
+	for (int i = 0; i < title.count(); i++)
+	{
+
+		html +=QString("<th><font size=\"5\">%1</font>   </th>").arg(title.at(i));
+
+	}
+	html +="< font size = \"3\">";
+	QString b[105][2];
+	b[0][0]="检验预案";	b[0][1] =  "1、是否通过开展应急演练，查找应急预案中存在的问题";
+	b[1][0] = "检验预案";b[1][1] = "2、是否提出完善应急预案意见";
+	b[2][0] = "检验预案";b[2][1] = "3、是否提出提高应急预案的实用性和可操作性针对性意见";
+	b[3][0] = "完善准备";b[3][1] = "1、应急队伍是否进行配备，是否满足现在应急救援需要";
+	b[4][0] = "完善准备"; b[4][1] = "2、是否进行现场应急救援物资、装备储备，是否满足现场应急救援需要";
+	b[5][0] = "完善准备"; b[5][1] = "3、是否进行应急救援技术准备，准备情况是否到位";
+	b[6][0] = "锻炼队伍"; b[6][1] = "1、是否增强演练组织单位、参与单位和人员等对应急预案的熟悉程度";
+	b[7][0] = "锻炼队伍"; b[7][1] = "2、是否有效提高演练单位、人员应急处置能力";
+	b[8][0] = "磨合机制"; b[8][1] = "1、是否进一步明确相关单位和人员的职责，理顺工作关系";
+	b[9][0] = "磨合机制"; b[9][1] = "2、是否有效提高应急指挥员的指挥协调能力";
+	b[10][0] = "磨合机制"; b[10][1] = "3、应急救援机制是否运转有序";
+
+	b[11][0] = "磨合机制"; b[11][1] = "4、是否进一步完善应急机制";
+	b[12][0] = "科普宣教"; b[12][1] = "通过开展应急演练，是否达到普及应急知识，提高公众风险防范意识和自救呼救等灾害应对能力的目的";
+	b[13][0] = "应急演练目标制定"; b[13][1] = "1、是否制定应急演练目标";
+	b[14][0] = "应急演练目标制定"; b[14][1] = "2、应急演练目标是否完善、有针对性";
+	b[15][0] = "应急演练目标制定"; b[15][1] = "3、演练目标是否可行";
+	b[16][0] = "应急演练原则"; b[16][1] = "1、是否结合实际、合理定位";
+	b[17][0] = "应急演练原则"; b[17][1] = "2、是否着眼实战、讲求实效";
+	b[18][0] = "应急演练原则"; b[18][1] = "3、是否精心组织、确保安全";
+	b[19][0] = "应急演练原则"; b[19][1] = "4、是否统筹规划、厉行节约";
+	b[20][0] = "应急演练分类"; b[20][1] = "1、按组织形式划分，本次应急演练类别为：①桌面演练；②实战演练";
+
+	b[21][0] = "应急演练分类"; b[21][1] = "2、按内容划分，本次应急演练类别为：①单项演练；②综合演练";
+	b[22][0] = "应急演练分类"; b[22][1] = "3、按目的与作用划分，本次应急演练类别为：①检验性演练；②示范性演练；③研究性演练";
+	b[23][0] = "应急演练计划"; b[23][1] = "1、是否根据实际情况，制定应急演练计划";
+	b[24][0] = "应急演练计划"; b[24][1] = "2、演练计划（方案）是否符合相关法律法规和应急预案规定";
+	b[25][0] = "应急演练计划"; b[25][1] = "3、演练计划（方案）是否符合按照先“单项后综合、先桌面后实战、循序渐进、时空有序”的原则制定";
+	b[26][0] = "应急演练计划"; b[26][1] = "4、演练计划（方案）中是否合理规划应急演练的频次、规模、形式、时间、地点等";
+	b[27][0] = "应急演练组织机构"; b[27][1] = "1、是否成立应急演练组织机构";
+	b[28][0] = "应急演练组织机构"; b[28][1] = "2、应急演练组织机构是否完善，职责是否明确";
+	b[29][0] = "应急演练组织机构"; b[29][1] = "3、应急演练组织机构是否按照“策划、保障、实施、评估”进行职能分工";
+	b[30][0] = "应急演练组织机构"; b[30][1] = "4、参演队伍是否包括应急预案管理部门人员、专兼职应急救援队伍以及志愿者队伍等";
+
+	b[31][0] = "应急演练情景是否包括"; b[31][1] = "1、事件类别";
+	b[32][0] = "应急演练情景是否包括"; b[32][1] = "2、发生的时间地点";
+	b[33][0] = "应急演练情景是否包括"; b[33][1] = "3、发展速度、强度与危险性";
+	b[34][0] = "应急演练情景是否包括"; b[34][1] = "4、受影响范围、人员和物资分布";
+	b[35][0] = "应急演练情景是否包括"; b[35][1] = "5、已造成的损失、后续发展预测";
+	b[36][0] = "应急演练情景是否包括"; b[36][1] = "6、气象及其他环境条件";
+	b[37][0] = "人员保障是否包括"; b[37][1] = "1、演练领导小组、演练总指挥、总策划";
+	b[38][0] = "人员保障是否包括"; b[38][1] = "2、文案人员、控制人员、评估人员、保障人员";
+	b[39][0] = "人员保障是否包括"; b[39][1] = "3、参演人员、模拟人员";
+	b[40][0] = "经费保障"; b[40][1] = "1、应急演练经费是否纳入年度预算";
+
+	b[41][0] = "经费保障"; b[41][1] = "2、应急演练经费是否及时拨付";
+	b[42][0] = "经费保障"; b[42][1] = "3、演练经费专款专用、节约高效";
+	b[43][0] = "场地保障"; b[43][1] = "1、是否选择合适的演练场地";
+	b[44][0] = "场地保障"; b[44][1] = "2、演练场的是否有足够的空间、良好的交通、生活、卫生和生产条件";
+	b[45][0] = "场地保障"; b[45][1] = "3、是否干扰公众生产生活";
+	b[46][0] = "物资器材保障"; b[46][1] = "1、应急预案和演练方案是否有纸质文本、演示文档等信息材料";
+	b[47][0] = "物资器材保障"; b[47][1] = "2、应急抢修物资准备是否满足演练要求";
+	b[48][0] = "物资器材保障"; b[48][1] = "3、是否能够全面模拟演练场景";
+	b[49][0] = "通信保障"; b[49][1] = "1、应急指挥机构、总策划、控制人员、参演人员、模拟人员等；之间是否建立及时可靠的信息传递渠道";
+	b[50][0] = "通信保障"; b[50][1] = "2、通讯器材配置是否满足抢险救援内部、外部通信联络需要";
+
+	b[51][0] = "通信保障"; b[51][1] = "3、演练现场是否建立多种公共和专用通信信息网络";
+	b[52][0] = "通信保障"; b[52][1] = "4、能否保证演练控制信息的快速传递";
+	b[53][0] = "安全保障"; b[53][1] = "1、是否针对应急演练可能出现的风险制定预防控制措施";
+	b[54][0] = "安全保障"; b[54][1] = "2、是否根据需要为演练人员配备个体防护装备";
+	b[55][0] = "安全保障"; b[55][1] = "3、演练现场是否有必要的安保措施，是否对演练现场进行封闭或管制，保证演练安全进行";
+	b[56][0] = "演练启动"; b[56][1] = "演练前，演练总指挥是否对演练的意义、目标、组织机构及职能分工、演练方案、演练程序、注意事项进行统一说明";
+	b[57][0] = "演练指挥与行动"; b[57][1] = "1、是否由演练总指挥负责演练实施全过程的指挥控制";
+	b[58][0] = "演练指挥与行动"; b[58][1] = "2、应急指挥机构是否按照演练方案指挥各参演队伍和人员，开展模拟演练事件的应急处置行动，完成各项演练活动";
+	b[59][0] = "演练指挥与行动"; b[59][1] = "3、演练控制人员是否充分掌握演练方案，按演练方案的要求，熟练发布控制信息，协调参演人员完成各项演练任务";
+	b[60][0] = "演练指挥与行动"; b[60][1] = "4、参演人员是否严格执行控制消息和指令，按照演练方案规定的程序开展应急处置行动，完成各项演练活动";
+
+	b[61][0] = "演练指挥与行动"; b[61][1] = "5、模拟人员是否按照演练方案要求，模拟未参加演练的单位或人员的行动，并作出信息反馈";
+	b[62][0] = "演练过程控制"; b[62][1] = "1）在讨论式桌面演练中；演练活动是否围绕对所提出问题进行讨论";
+	b[63][0] = "演练过程控制"; b[63][1] = "2）是否由总策划以口头或书面形式，部署引入一个或若干个问题";
+	b[64][0] = "演练过程控制"; b[64][1] = "3）参演人员是否根据应急预案及相关规定，讨论应采取的行动";
+	b[65][0] = "演练过程控制"; b[65][1] = "4）由总策划按照演练方案发出控制消息，参演人员接受到事件信息后，是否通过角色扮演或模拟操作，完成应急处置活动";
+	b[66][0] = "演练过程控制"; b[66][1] = "1）在实战演练中，是否要通过传递控制消息来控制演练过程";
+	b[67][0] = "演练过程控制"; b[67][1] = "2）总策划按照演练方案发出控制消息后，控制人员是否立即向参演人员和模拟人员传递控制消息";
+	b[68][0] = "演练过程控制"; b[68][1] = "3）参演人员和模拟人员接受到信息后，是否按照发生真实事件时的应急处置程序或根据应急行动方案，采取相应的应急处置行动；";
+	b[69][0] = "演练过程控制"; b[69][1] = "4）演练过程中，控制人员是否随时掌握演练进展情况，并向总策划报告演练中出现的各种问题。";
+	b[70][0] = "演练解说"; b[70][1] = "1、在演练实施过程中，是否安排专人对演练进行解说";
+
+	b[71][0] = "演练解说"; b[71][1] = "2、是否包含演练背景描述";
+	b[72][0] = "演练解说"; b[72][1] = "3、是否包含进程讲解";
+	b[73][0] = "演练解说"; b[73][1] = "4、是否包含案例介绍";
+	b[74][0] = "演练解说"; b[74][1] = "5、是否包含环境渲染";
+	b[75][0] = "演练记录"; b[75][1] = "1、在演练实施过程中，是否安排专门人员，采用文字、照片和音像等手段记录演练过程；";
+	b[76][0] = "演练记录是否包含"; b[76][1] = "1）演练实际开始与结束时间；";
+	b[77][0] = "演练记录是否包含"; b[77][1] = "2）演练过程控制情况；";
+	b[78][0] = "演练记录是否包含"; b[78][1] = "3）各项演练活动中参演人员的表现；";
+	b[79][0] = "演练记录是否包含"; b[79][1] = "4）意外情况及其处置；";
+	b[80][0] = "演练记录是否包含"; b[80][1] = "5）是否详细记录可能出现的人员“伤亡”（如进入“危险”场所而无安全防护，在所规定的时间内不能完成疏散等）及财产“损失”等情况";
+
+	b[81][0] = "演练记录是否包含"; b[81][1] = "6）文字、照片照片和音像记录是否全方位反映演练实施过程";
+	b[82][0] = "宣传教育"; b[82][1] = "1、是否针对应急演练对其他人员进行宣传教育；";
+	b[83][0] = "宣传教育"; b[83][1] = "2、通过宣传教育是否有效提高其他人员的抢险救援意识、普及抢险救援知识和技能。";
+	b[84][0] = "应急演练结束与终止"; b[84][1] = "1、演练完毕，是否由总策划发出结束信号，演练总指挥宣布演练结束";
+	b[85][0] = "应急演练结束与终止"; b[85][1] = "2、演练结束后所有人员是否停止演练活动，按预定方案集合进行现场总结讲评或者组织疏散";
+	b[86][0] = "应急演练结束与终止"; b[86][1] = "3、演练结束后是否指定专人负责组织人员对演练现场进行清理和恢复";
+	b[87][0] = "演练评估"; b[87][1] = "1、演练结束后是否组织有关人员对应急演练过程进行评估。";
+	b[88][0] = "演练评估是否包括"; b[88][1] = "1）演练执行情况";
+	b[89][0] = "演练评估是否包括"; b[89][1] = "2）预案的合理性和可操作性";
+	b[90][0] = "演练评估是否包括"; b[90][1] = "3）应急指挥人员的指挥协调能力";
+
+
+	b[91][0] = "演练评估是否包括"; b[91][1] = "4）参演人员的处置能力";
+	b[92][0] = "演练评估是否包括"; b[92][1] = "5）演练所用设备的适用性";
+	b[93][0] = "演练评估是否包括"; b[93][1] = "6）演练目标的实现情况、演练的成本效益分析、对完善预案的建议等";
+	b[94][0] = "演练总结"; b[94][1] = "1、演练结束后演练单位是否对演练进行系统和全面总结，并形成演练总结报告";
+	b[95][0] = "演练总结是否包括"; b[95][1] = "1）演练目的";
+	b[96][0] = "演练总结是否包括"; b[96][1] = "2）时间和地点";
+	b[97][0] = "演练总结是否包括"; b[97][1] = "3）参演单位和人员";
+	b[98][0] = "演练总结是否包括"; b[98][1] = "4）演练方案概要";
+	b[99][0] = "演练总结是否包括"; b[99][1] = "5）发现的问题与原因，经验和教训、以及改进有关工作的建议等";
+	b[100][0] = "成功运用"; b[100][1] = "1、对演练中暴露出来的问题，演练单位是否及时采取措施予以改进";
+
+	b[101][0] = "成功运用"; b[101][1] = "2、是否及时组织对应急预案的修订、完善";
+	b[102][0] = "成功运用"; b[102][1] = "3、是否有针对性的加强应急人员地教育和培训";
+	b[103][0] = "成功运用"; b[103][1] = "4、是否对应急物资装备进行有计划地更新等";
+	QString resurt;
+	pdf_form_data_1();
+	for (int i = 0; i < 104; i++)
+	{
+		html += "<tr>";
+		if (i!=20&& i != 21 && i != 22)
+		{
+			if (pdf_data[i] == 0)
+				resurt = "是";
+			else if (pdf_data[i] == 1)
+				resurt = "否";
+			else if (pdf_data[i] == 4)
+				resurt = "空缺";
+		}
+		else
+		{
+			if (pdf_data[i] == 0)
+				resurt = "选项1";
+			else if (pdf_data[i] == 1)
+				resurt = "选项2";
+			else if (pdf_data[i] == 2)
+				resurt = "选项3";
+			else if (pdf_data[i] == 4)
+				resurt = "空缺";
+		}
+	    html += QString( "<td align=\"center\"><font size=\"4\">%1</font></td>").arg(b[i][0]);
+		html += QString("<td align=\"center\"><font size=\"4\">%1</font></td>").arg(b[i][1]);
+		html += QString("<td align=\"center\"><font size=\"4\">%1</font></td>").arg(resurt);
+		html += "</tr>";
+	}
+	html += "</font></table>";
+	html += "</div>";
+
+	return html;
+}
+QString place::GeneratePicWord1()
+{
+	QStringList title0;
+	title0.push_back(("名称"));
+	title0.push_back(("内容"));
+
+
+	QString html;
+	//第一页文字部分
+	QDateTime current_date_time = QDateTime::currentDateTime();
+	QString current_date = current_date_time.toString("yyyy-MM-dd hh:mm:ss ddd");
+	html += QString("<th><font size = \"14\">应急演练评估结果</font>   </th>");
+	for (int k = 0; k <= 3; k++)
+	{
+		html += "<br / >";
+	}
+	html += "<h3 align=\"center\">" + current_date + "</h3><br>";
+
+	QString a[12];
+	a[0] = "系统评估场景：";
+	a[2] = "评估队伍名称：";
+	a[4] = "自动评估分数：";
+	a[6] = "人工评估分数：";
+	a[8] = "合计评估分数：";
+	a[10] = "合计持续时间：";
+	a[1] = ui.label_12->text();
+	a[3] = Team_name;
+	a[5] = QString::number(score_auto_all, 10);
+	a[7] = QString::number(score, 10);
+	a[9] = QString::number(score_finish, 'g', 6);
+	a[11] = Timing;
+	for (int k = 0; k <= 13; k++)
+	{
+		html += "<br / >";
+	}
+	//表格1部分
+	html += "<div style=\"margin-left:-80px\">";
+	html += "<table width=\"400\" border=\"0.5\"align=\"center\"style=\"border-collapse:collapse;\"border-color=\"green\"margin-left:\"0px\";>";
+	html += "<tr style=\"background-color:#ccc\" >";
+
+	//html += "<table align=\"center\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\"  style=\"width: 100%; height: 100%;\"margin-left:-200\">";
+	for (int i = 0; i < title0.count(); i++)
+	{
+
+		html += QString("<th><font size=\"6\" >%1</font>   </th>").arg(title0.at(i));
+
+	}
+	for (int i = 0; i < 12; i = i + 2)
+	{
+		html += "< font size = \"10\">";
+		html += "<tr>";
+		html += QString("<td align=\"center\"><font size=\"5\" >%1</font></td>").arg(a[i]);
+		html += QString("<td align=\"center\"><font size=\"5\" >%1</font></td>").arg(a[i + 1]);
+		html += "</tr>";
+		html += "</font>";
+	}
+	html += "</table>";
+	html += "</div>";
+	for (int k = 0; k <= 30; k++)
+	{
+		html += "<br / >";
+	}
+	html += QString("<th><font size = \"10\">评分情况</font>   </th>");
+
+	//表格2部分
+	QStringList title;
+	title.push_back(("评估项目"));
+	title.push_back(("评估内容及要求"));
+	title.push_back(("评估结果"));
+	html += "<div style=\"margin-left:-80px\">";
+	html += "<table width=\"500\" border=\"0.5\"align=\"center\"style=\"border-collapse:collapse;\"border-color=\"green\"margin-left:\"0px\";>";
+	html += "<tr style=\"background-color:#ccc\" >";
+
+	for (int i = 0; i < title.count(); i++)
+	{
+
+		html += QString("<th><font size=\"5\">%1</font>   </th>").arg(title.at(i));
+
+	}
+	html += "< font size = \"3\">";
+	QString b[28][3];
+	b[0][0] = "演练保障";	b[0][1] = "安全保障性";
+	b[1][0] = "演练保障"; b[1][1] = "医疗保障性";
+	b[2][0] = "演练保障"; b[2][1] = "通讯保障程度";
+	b[3][0] = "演练保障"; b[3][1] = "人员保障完善度";
+	b[4][0] = "演练保障"; b[4][1] = "器材保障度";
+	b[5][0] = "演练保障"; b[5][1] = "场地保障度";
+	b[6][0] = "演练目标和计划"; b[6][1] = "演练目标的明确性";
+	b[7][0] = "演练目标和计划"; b[7][1] = "演练计划的合理性";
+	b[8][0] = "演练目标和计划"; b[8][1] = "指挥人员对演练计划的明确度";
+	b[9][0] = "演练目标和计划"; b[9][1] = "参演人员对于演练目标明确度";
+	b[10][0] = "指挥人员和救援人员的能力"; b[10][1] = "任务分配的合理程度";
+
+	b[11][0] = "指挥人员和救援人员的能力"; b[11][1] = "任务分配明确程度";
+	b[12][0] = "指挥人员和救援人员的能力"; b[12][1] = "演练通讯情况";
+	b[13][0] = "指挥人员和救援人员的能力"; b[13][1] = "演练人员对计划遵守程度";
+	b[14][0] = "指挥人员和救援人员的能力"; b[14][1] = "对于特殊情况的处置能力";
+	b[15][0] = "指挥人员和救援人员的能力"; b[15][1] = "指挥人员对于演练现场的掌握情况";
+	b[16][0] = "指挥人员和救援人员的能力"; b[16][1] = "对于救援细节的处理情况";
+	b[17][0] = "指挥人员和救援人员的能力"; b[17][1] = "现场救援秩序情况";
+	b[18][0] = "指挥人员和救援人员的能力"; b[18][1] = "对于不法分子追捕能力";
+	b[19][0] = "指挥人员和救援人员的能力"; b[19][1] = "行动效率";
+	b[20][0] = "指挥人员和救援人员的能力"; b[20][1] = "对于现场的保护情况";
+
+	b[21][0] = "指挥人员和救援人员的能力"; b[21][1] = "人员受伤情况";
+	b[22][0] = "指挥人员和救援人员的能力"; b[22][1] = "演练人员救援技能熟练度";
+	b[23][0] = "指挥人员和救援人员的能力"; b[23][1] = "演练人员的协作能力";
+	b[24][0] = "演练结束"; b[24][1] = "演练花费的时间";
+	b[25][0] = "演练结束"; b[25][1] = "救援结束后现场的处理情况";
+	b[26][0] = "演练结束"; b[26][1] = "被救援人员的安置和救护情况";
+	b[27][0] = "演练结束"; b[27][1] = "演练结束人员集合和疏散情况";
+
+	b[0][2] = ui.lineEdit_score1->text();
+	b[1][2] = ui.lineEdit_score2->text();
+	b[2][2] = ui.lineEdit_score3->text();
+	b[3][2] = ui.lineEdit_score4->text();
+	b[4][2] = ui.lineEdit_score5->text();
+	b[5][2] = ui.lineEdit_score6->text();
+	b[6][2] = ui.lineEdit_score7->text();
+	b[7][2] = ui.lineEdit_score8->text();
+	b[8][2] = ui.lineEdit_score9->text();
+	b[9][2] = ui.lineEdit_score10->text();
+	b[10][2] = ui.lineEdit_score11->text();
+
+	b[11][2] = ui.lineEdit_score12->text(); 
+	b[12][2] = ui.lineEdit_score13->text();
+	b[13][2] = ui.lineEdit_score14->text();
+	b[14][2] = ui.lineEdit_score15->text();
+	b[15][2] = ui.lineEdit_score16->text();
+	b[16][2] = ui.lineEdit_score17->text();
+	b[17][2] = ui.lineEdit_score18->text();
+	b[18][2] = ui.lineEdit_score19->text();
+	b[19][2] = ui.lineEdit_score20->text();
+	b[20][2] = ui.lineEdit_score21->text();
+
+	b[21][2] = ui.lineEdit_score22->text();
+	b[22][2] = ui.lineEdit_score23->text();
+	b[23][2] = ui.lineEdit_score24->text();
+	b[24][2] = ui.lineEdit_score25->text();
+	b[25][2] = ui.lineEdit_score26->text();
+	b[26][2] = ui.lineEdit_score27->text();
+	b[27][2] = ui.lineEdit_score28->text();
+	QString resurt;
+	for (int i = 0; i < 28; i++)
+	{
+		html += "<tr>";
+		if (b[i][2]=="")
+		{
+				resurt = "空缺";	
+		}
+		else
+		{
+			resurt = b[i][2];
+		}
+		html += QString("<td align=\"center\"><font size=\"4\">%1</font></td>").arg(b[i][0]);
+		html += QString("<td align=\"center\"><font size=\"4\">%1</font></td>").arg(b[i][1]);
+		html += QString("<td align=\"center\"><font size=\"4\">%1</font></td>").arg(resurt);
+		html += "</tr>";
+	}
+	html += "</font></table>";
+	html += "</div>";
+
+	return html;
 }
 void place::onRestart()
 {
@@ -1226,11 +1729,11 @@ void place::Click_pushButton_save()
 	score2[18][1] = ui.radioButton_2_12->isChecked() ? "Y" : "N";
 	score2[19][0] = ui.radioButton_2_13->isChecked() ? "Y" : "N";
 	score2[19][1] = ui.radioButton_2_14->isChecked() ? "Y" : "N";
-	score2[20][0] = ui.radioButton_2_15->isChecked() ? "Y" : "N";
+	score2[20][0] = ui.radioButton_2_15->isChecked() ? "Y" : "N";//1
 	score2[20][1] = ui.radioButton_2_16->isChecked() ? "Y" : "N";
-	score2[21][0] = ui.radioButton_2_17->isChecked() ? "Y" : "N";
+	score2[21][0] = ui.radioButton_2_17->isChecked() ? "Y" : "N";//2
 	score2[21][1] = ui.radioButton_2_18->isChecked() ? "Y" : "N";
-	score2[22][0] = ui.radioButton_2_19->isChecked() ? "Y" : "N";
+	score2[22][0] = ui.radioButton_2_19->isChecked() ? "Y" : "N";//3
 	score2[22][1] = ui.radioButton_2_20->isChecked() ? "Y" : "N";
 	score2[22][2] = ui.radioButton_2_21->isChecked() ? "Y" : "N";
 	score2[23][0] = ui.radioButton_2_22->isChecked() ? "Y" : "N";
@@ -1989,6 +2492,8 @@ void place::stylesheet()
 	ui.label_content_9->setStyleSheet(QString("color: %1").arg(color3));
 	ui.label_content_10->setStyleSheet(QString("color: %1").arg(color3));
 	ui.label_content_11->setStyleSheet(QString("color: %1").arg(color3));
+	ui.label_content_12->setStyleSheet(QString("color: %1").arg(color3));
+
 	ui.label_8->setStyleSheet(QString("color: %1").arg(color3));
 	ui.label_name->setStyleSheet(QString("color: %1").arg(color3));
 	ui.label_content->setFont(font1);
@@ -2002,6 +2507,7 @@ void place::stylesheet()
 	ui.label_content_9->setFont(font1);
 	ui.label_content_10->setFont(font1);
 	ui.label_content_11->setFont(font1);
+	ui.label_content_12->setFont(font1);
 
 	QStringList qss1;//选择
 	qss1.append(QString(("QComboBox{"          //选择框  
@@ -2081,4 +2587,28 @@ void place::stylesheet()
 
 	//ui.label->setStyleSheet(QString::fromUtf8("QFrame{border-radius: 5px;border: 2px solid %1;}").arg("#999999"));
 
+}
+void pdf_form_data_1() 
+{
+	for (int i = 0; i < 105; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			if (score2[i][j] == "Y")
+			{
+				pdf_data[i] = j;
+				break;
+			}
+			
+		}
+	}
+	for (int i = 0; i < 105; i++)
+	{
+			if (score2[i][0] != "Y"&&score2[i][1] != "Y"&&score2[i][2] != "Y")
+			{
+				pdf_data[i] = 4;
+
+			}
+	}
+	
 }

@@ -40,6 +40,8 @@ public:
 	QMediaPlaylist *_pMediaPlaylist;
 	void openPlayFile_clicked();
 	QString timing_content(QDateTime a);
+	QString GeneratePicWord();
+	QString GeneratePicWord1();
 
 private slots:
 	void Click_pushButton_save();

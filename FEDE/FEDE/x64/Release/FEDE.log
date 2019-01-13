@@ -1,6 +1,1 @@
-﻿  place.cpp
-d:\fede\fede\fede\fede.h(9): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
-d:\fede\fede\fede\fede.h(10): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
-d:\fede\fede\fede\Input.h(6): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
-place.cpp(2): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
-  FEDE.vcxproj -> D:\FEDE\FEDE\x64\Release\FEDE.exe
+﻿  FEDE.vcxproj -> D:\FEDE\FEDE\x64\Release\FEDE.exe
